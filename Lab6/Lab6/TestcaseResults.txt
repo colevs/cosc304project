@@ -1,0 +1,307 @@
+testAddStudent (__main__.TestEnrollDB)
+Tests add a StudentConnecting to database. ... 
+Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test add student:
+
+Executing list all students.
+sid, sname, sex, birthdate, gpa
+00005465, Joe Smith, M, 1997-05-01, 3.20
+00112233, Trisha Cavanugh, F, 1994-10-31, 2.96
+00324534, Tony Tenson, M, 1997-03-21, 3.21
+00546343, Sarah Deacon, F, 1996-01-09, 2.78
+00567454, Scott Lawrence, M, 1997-05-11, 2.58
+00573453, Ryan Hackert, M, 1995-07-07, 3.10
+00612354, Elizabeth Guillum, F, 1998-03-06, 3.70
+00934353, James Miller, M, 1997-05-29, 2.82
+00983124, Chris Buckley, M, 1996-06-12, 2.67
+01239874, Beth Bohan, F, 1995-04-17, 2.67
+11111111, Matt Blair, M, 1994-08-04, 2.71
+11223344, Jim Jones, M, 1997-12-31, None
+11563098, Steve Striker, M, 1998-08-09, 2.77
+12456789, Dan Benson, M, 1997-11-12, 2.82
+22222222, Stephanie Stevens, F, 1999-08-15, None
+22903424, Jie Wang, F, 1996-07-04, 2.96
+45671234, Adam Scott, M, 1993-07-22, 2.96
+55555555, Stacy Smith, F, 1998-01-01, None
+55980348, Brian Brooks, M, 1995-01-01, 3.22
+63112345, Yan Yang, F, 1997-08-04, 3.09
+77777777, Sheldon Cooper, M, 1994-03-08, None
+98123434, Jill Patten, F, 1992-09-12, 2.74
+99234353, Jamie Stokes, M, 1990-08-23, 3.05
+99999999, Wang Liu, M, 1994-09-30, 2.94ok
+Closing database connection.
+Connecting to database.
+
+testComputeGPA (__main__.TestEnrollDB)
+Tests computing GPA for student ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test compute GPA for student: 45671234.
+
+Total columns: 1
+gpa
+2.956250
+Total results: 1
+
+Test compute GPA for student: 00000000
+
+Total columns: 1
+gpa
+None
+Total results: 1ok
+Closing database connection.
+Connecting to database.
+
+testDeleteStudent (__main__.TestEnrollDB)
+Tests deleting a student ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test delete student:
+
+Executing list all students.
+sid, sname, sex, birthdate, gpa
+00005465, Joe Smith, M, 1997-05-01, 3.20
+00112233, Trisha Cavanugh, F, 1994-10-31, 2.96
+00324534, Tony Tenson, M, 1997-03-21, 3.21
+00546343, Sarah Deacon, F, 1996-01-09, 2.78
+00567454, Scott Lawrence, M, 1997-05-11, 2.58
+00573453, Ryan Hackert, M, 1995-07-07, 3.10
+00612354, Elizabeth Guillum, F, 1998-03-06, 3.70
+00934353, James Miller, M, 1997-05-29, 2.82
+00983124, Chris Buckley, M, 1996-06-12, 2.67
+01239874, Beth Bohan, F, 1995-04-17, 2.67
+11111111, Matt Blair, M, 1994-08-04, 2.71
+11563098, Steve Striker, M, 1998-08-09, 2.77
+12456789, Dan Benson, M, 1997-11-12, 2.82
+22222222, Stephanie Stevens, F, 1999-08-15, None
+22903424, Jie Wang, F, 1996-07-04, 2.96
+45671234, Adam Scott, M, 1993-07-22, 2.96
+55980348, Brian Brooks, M, 1995-01-01, 3.22
+63112345, Yan Yang, F, 1997-08-04, 3.09
+77777777, Sheldon Cooper, M, 1994-03-08, None
+98123434, Jill Patten, F, 1992-09-12, 2.74
+99234353, Jamie Stokes, M, 1990-08-23, 3.05ok
+Closing database connection.
+Connecting to database.
+
+testListAllStudents (__main__.TestEnrollDB)
+Tests listing all students ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test List All students.
+
+Executing list all students.
+sid, sname, sex, birthdate, gpa
+00005465, Joe Smith, M, 1997-05-01, 3.20
+00112233, Trisha Cavanugh, F, 1994-10-31, 2.96
+00324534, Tony Tenson, M, 1997-03-21, 3.21
+00546343, Sarah Deacon, F, 1996-01-09, 2.78
+00567454, Scott Lawrence, M, 1997-05-11, 2.58
+00573453, Ryan Hackert, M, 1995-07-07, 3.10
+00612354, Elizabeth Guillum, F, 1998-03-06, 3.70
+00934353, James Miller, M, 1997-05-29, 2.82
+00983124, Chris Buckley, M, 1996-06-12, 2.67
+01239874, Beth Bohan, F, 1995-04-17, 2.67
+11111111, Matt Blair, M, 1994-08-04, 2.71
+11563098, Steve Striker, M, 1998-08-09, 2.77
+12456789, Dan Benson, M, 1997-11-12, 2.82
+22222222, Stephanie Stevens, F, 1999-08-15, None
+22903424, Jie Wang, F, 1996-07-04, 2.96
+45671234, Adam Scott, M, 1993-07-22, 2.96
+55980348, Brian Brooks, M, 1995-01-01, 3.22
+63112345, Yan Yang, F, 1997-08-04, 3.09
+77777777, Sheldon Cooper, M, 1994-03-08, None
+98123434, Jill Patten, F, 1992-09-12, 2.74
+99234353, Jamie Stokes, M, 1990-08-23, 3.05
+99999999, Wang Liu, M, 1994-09-30, 2.94ok
+Closing database connection.
+Connecting to database.
+
+testListCourseStudents (__main__.TestEnrollDB)
+Tests listing all students in course ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test list students in course: COSC 304.
+
+Student Id, Student Name, Course Number, Section Number
+00005465, Joe Smith, COSC 304, 001
+00112233, Trisha Cavanugh, COSC 304, 001
+00546343, Sarah Deacon, COSC 304, 001
+00567454, Scott Lawrence, COSC 304, 001
+00573453, Ryan Hackert, COSC 304, 001
+00612354, Elizabeth Guillum, COSC 304, 001
+00934353, James Miller, COSC 304, 001
+12456789, Dan Benson, COSC 304, 001
+45671234, Adam Scott, COSC 304, 001
+99234353, Jamie Stokes, COSC 304, 001
+
+Test list students in course: DATA 301
+
+Student Id, Student Name, Course Number, Section Numberok
+Closing database connection.
+Connecting to database.
+
+testListDeptProfessors (__main__.TestEnrollDB)
+Tests listing all professors in a department ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test list professors in a department: Computer Science
+
+Professor Name, Department Name
+Art Funk, Computer Science
+Bowen Hui, Computer Science
+Don Epley, Computer Science
+Ramon Lawrence, Computer Science
+
+Test list professors in a department: none.
+
+Professor Name, Department Nameok
+Closing database connection.
+Connecting to database.
+
+testNewEnroll (__main__.TestEnrollDB)
+Tests creating a new enroll ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test new enrroll:
+
+Closing database connection.ok
+Connecting to database.
+
+testQuery1 (__main__.TestEnrollDB) ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test query 1:
+
+Total columns: 2
+sid, sname
+22222222, Stephanie Stevens
+77777777, Sheldon Cooper
+Total results: 2ok
+Closing database connection.
+Connecting to database.
+
+testQuery2 (__main__.TestEnrollDB) ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test query 2:
+
+Total columns: 4
+sid, sname, numcourses, gpa
+00612354, Elizabeth Guillum, 9, 3.701111
+55980348, Brian Brooks, 9, 3.222222
+00324534, Tony Tenson, 16, 3.207500
+00005465, Joe Smith, 5, 3.198000
+77777777, Sheldon Cooper, 0, None
+Total results: 5ok
+Closing database connection.
+Connecting to database.
+
+testQuery3 (__main__.TestEnrollDB) ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test query 3:
+
+Total columns: 5
+cnum, numsections, numstudents, avggrade, numprofs
+CHEM 111, 3, 33, 2.868182, 2
+CHEM 113, 4, 33, 2.938788, 2
+COSC 222, 2, 16, 3.123750, 1
+COSC 304, 1, 10, 3.298000, 1
+COSC 310, 1, 10, 3.098000, 1
+COSC 499, 1, 0, None, 1
+Total results: 6ok
+Closing database connection.
+Connecting to database.
+
+testQuery4 (__main__.TestEnrollDB)
+Return the students who received a higher grade than their course section average in at least two courses. ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test query 4:
+
+Total columns: 3
+sid, sname, numhigher
+00324534, Tony Tenson, 10
+00112233, Trisha Cavanugh, 9
+00612354, Elizabeth Guillum, 8
+55980348, Brian Brooks, 7
+99234353, Jamie Stokes, 7
+Total results: 5ok
+Closing database connection.
+Connecting to database.
+
+testRemoveStudentFromSection (__main__.TestEnrollDB)
+Tests removing student ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Removing student 00546343 from CHEM 113 002:
+
+Closing database connection.ok
+Connecting to database.
+
+testUpdateStudent (__main__.TestEnrollDB)
+Tests updating a student ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test update student:
+
+Executing list all students.
+Closing database connection.ok
+Connecting to database.
+
+testUpdateStudentGPA (__main__.TestEnrollDB)
+Tests updating a students GPA ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test update student mark:
+
+Closing database connection.ok
+Connecting to database.
+
+testUpdateStudentMark (__main__.TestEnrollDB)
+Tests updating student mark ... Loading data
+Database load complete
+Loading data
+Database load complete
+
+Test update student mark for student 98123434:
+
+Closing database connection.ok
+
+
+----------------------------------------------------------------------
+Ran 15 tests in 166.942s
+
+OK
+[Finished in 167.1s]
