@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*,java.net.URLEncoder" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
@@ -34,17 +35,40 @@ String pw = "YourStrong@Passw0rd";
 
 // Variable name now contains the search string the user entered
 // Use it to build a query and print out the resultset.  Make sure to use PreparedStatement!
-String query = "SELECT * FROM product WHERE productName LIKE '%%'";
+String query = "SELECT productName, productId, productPrice FROM product WHERE productName LIKE ?";
 PreparedStatement pStatement = null;
 
 // Make the connection
-try (Connection con = DriverManager.getConnection(url, uid, pw);
-	Statement stmt = con.createStatement();) {
-
+try (Connection con = DriverManager.getConnection(url, uid, pw);) {
+	if (name == null) name = "";
+	PreparedStatement pstmt = null;
+	ResultSet rst = null;
+	pstmt = con.prepareStatement(query);
+	pstmt.setString(1, "%"+name+"%");
+	rst = pstmt.executeQuery();
 
 
 // Print out the ResultSet
-
+	DecimalFormat currFormat = new DecimalFormat("##.00");
+	//NumberFormat currFormat = NumberFormat.getCurrencyInstance();
+	
+	if (name == "") {
+		out.println("<h2>All Products</h2>");
+	} else {
+		out.println("<h2>Products containing '"+name+"'</h2>");
+	}
+	out.println("<table><tr><th></th><th>Product Name</th><th>Price</th></tr>");
+	while (rst.next()) {
+		String productName = rst.getString(1);
+		int productId = rst.getInt(2);
+		double productPrice = rst.getDouble(3);
+		String link = "addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice);
+		out.println("<tr><td><a href="+link+">Add to Cart</a></td>"
+			+"<td>"+productName+"</td>"
+			+"<td>$"+currFormat.format(productPrice)+"</td></tr>");
+	}
+	out.println("</table>");
+	con.close();
 // For each product create a link of the form
 // addcart.jsp?id=productId&name=productName&price=productPrice
 // Close connection
