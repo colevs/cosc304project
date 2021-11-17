@@ -28,10 +28,20 @@ catch (java.lang.ClassNotFoundException e)
 	out.println("ClassNotFoundException: " +e);
 }
 
+String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
+String uid = "SA";
+String pw = "YourStrong@Passw0rd";
+
 // Variable name now contains the search string the user entered
 // Use it to build a query and print out the resultset.  Make sure to use PreparedStatement!
+String query = "SELECT * FROM product WHERE productName LIKE '%%'";
+PreparedStatement pStatement = null;
 
 // Make the connection
+try (Connection con = DriverManager.getConnection(url, uid, pw);
+	Statement stmt = con.createStatement();) {
+
+
 
 // Print out the ResultSet
 
@@ -42,6 +52,7 @@ catch (java.lang.ClassNotFoundException e)
 // Useful code for formatting currency values:
 // NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 // out.println(currFormat.format(5.0);	// Prints $5.00
+}
 %>
 
 </body>
