@@ -1,6 +1,5 @@
 <%@ page import="java.sql.*,java.net.URLEncoder" %>
 <%@ page import="java.text.NumberFormat" %>
-<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
@@ -49,8 +48,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 
 
 // Print out the ResultSet
-	DecimalFormat currFormat = new DecimalFormat("##.00");
-	//NumberFormat currFormat = NumberFormat.getCurrencyInstance();
+	NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
 	
 	if (name == "") {
 		out.println("<h2>All Products</h2>");
@@ -65,7 +63,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 		String link = "addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice);
 		out.println("<tr><td><a href="+link+">Add to Cart</a></td>"
 			+"<td>"+productName+"</td>"
-			+"<td>$"+currFormat.format(productPrice)+"</td></tr>");
+			+"<td>"+currFormat.format(productPrice)+"</td></tr>");
 	}
 	out.println("</table>");
 	con.close();
