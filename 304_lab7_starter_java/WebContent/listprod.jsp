@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YOUR NAME Grocery</title>
+<title>Bigtime Grocery</title>
 </head>
 <body>
 
