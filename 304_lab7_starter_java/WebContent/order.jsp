@@ -120,6 +120,8 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 			out.println("<h1>Your order reference number is: " + orderId + "</h1> <br>");
 			out.println("<h1> Shipping to customer: " + custId + " Name: " + customerFirstName + " " + customerLastName + "</h1>");
 			productList.clear();
+			productList = null;
+			session.setAttribute("productList", productList);
 		}
 	} else {
 		out.println("<h1>Invalid customer id. Go back to the previous page and try again.</h1>");
