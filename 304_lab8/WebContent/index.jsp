@@ -20,7 +20,9 @@
 
 <%
 // TODO: Display user name that is logged in (or nothing if not logged in)
-out.println("<h3 align=\"center\">Signed in as: " + session.getAttribute("authenticatedUser") + "</h3>");	
+if(session.getAttribute("authenticatedUser") != null) {
+        out.println("<h3 align=\"center\">Signed in as: " + session.getAttribute("authenticatedUser") + "</h3>");
+}	
 %>
 </body>
 </head>
