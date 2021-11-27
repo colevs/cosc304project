@@ -61,10 +61,17 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 		String productName = rst.getString(1);
 		int productId = rst.getInt(2);
 		double productPrice = rst.getDouble(3);
-		String link = "\"addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice)+"\"";
-		out.println("<tr><td><a href="+link+">Add to Cart</a></td>"
-			+"<td>"+productName+"</td>"
+
+		String addCartLink = "\"addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice)+"\"";
+		String productPageLink = "\"product.jsp?id="+productId+"\"";
+
+		out.println("<tr><td><a href="+addCartLink+">Add to Cart</a></td>"
+			+"<td><a href="+productPageLink+">"+productName+"</a></td>"
 			+"<td>"+currFormat.format(productPrice)+"</td></tr>");
+
+		/*out.println("<tr><td><a href="+addCartLink+">Add to Cart</a></td>"
+			+"<td>"+productName+"</td>"
+			+"<td>"+currFormat.format(productPrice)+"</td></tr>");*/
 	}
 	out.println("</table>");
 	con.close();
