@@ -32,10 +32,19 @@
 
 		try 
 		{
-			getConnection();
+			String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
+			String uid = "SA";
+			String pw = "YourStrong@Passw0rd";
+			Connection con = DriverManager.getConnection(url, uid, pw);
+			Statement stmt = con.createStatement();
 			
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
-			retStr = "";			
+			ResultSet rst = stmt.executeQuery("SELECT userid, password FROM customer");
+			while(rst.next()) {
+				if(rst.getString("userid").equals(username) && rst.getString("password").equals(password)) {
+					retStr = username;
+				}
+			}
 		} 
 		catch (SQLException ex) {
 			out.println(ex);

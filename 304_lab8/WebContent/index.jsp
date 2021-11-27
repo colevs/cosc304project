@@ -19,7 +19,8 @@
 <h2 align="center"><a href="logout.jsp">Log out</a></h2>
 
 <%
-// TODO: Display user name that is logged in (or nothing if not logged in)	
+// TODO: Display user name that is logged in (or nothing if not logged in)
+out.println("<h3 align=\"center\">Signed in as: " + session.getAttribute("authenticatedUser") + "</h3>");	
 %>
 </body>
 </head>
