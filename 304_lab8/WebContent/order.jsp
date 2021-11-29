@@ -5,6 +5,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="java.math.*" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
@@ -93,8 +94,8 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 					  pstmt1.setInt(1, orderId);
 					  pstmt1.setInt(2, Integer.parseInt(productId));
 					  pstmt1.setInt(3, qty);
-					  pstmt1.setBigDecimal(4, new java.math.BigDecimal(subTotal));
-					  pstmt1.execute();
+					  pstmt1.setBigDecimal(4, BigDecimal.valueOf(subTotal));
+					  pstmt1.executeUpdate();
 					}	catch (SQLException ex) {
 							out.println(ex); 
 					}
@@ -105,11 +106,12 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 			out.println("<th>Order Total:" + currFormat.format(totalPrice) + "</th>");
 			try ( Connection con = DriverManager.getConnection(url, uid, pw);
 			Statement stmt = con.createStatement();) 	{	
-			PreparedStatement pstmt2 = con.prepareStatement("UPDATE ordersummary SET totalAmount = "+new java.math.BigDecimal(totalPrice)+" WHERE orderId = ?");
-			pstmt2.setInt(1, orderId);
+			PreparedStatement pstmt2 = con.prepareStatement("UPDATE ordersummary SET totalAmount = ? WHERE orderId = ?");
+			pstmt2.setBigDecimal(1, BigDecimal.valueOf(totalPrice));
+			pstmt2.setInt(2, orderId);
 			pstmt2.executeUpdate();			
-	  		}	catch (SQLException ex) {     
-		  			out.println(ex); 
+	  		}	catch (SQLException ex) {
+				out.println(ex); 
 			  }
 			out.println("</td>");
 			out.println("</table>");
