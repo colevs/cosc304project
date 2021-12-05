@@ -39,5 +39,8 @@ String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
 %>
 
 </body>
+<h1 style="color: red;">Reset Database</h1>
+<h4><a href="loaddata.jsp">Reset Database</a></h4>
+<p style="color:blue">Warning! This will reset the database</p>
 </html>
 
