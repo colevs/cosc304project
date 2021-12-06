@@ -21,6 +21,7 @@ if(userName == null) {
 String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
     String uid = "SA";
     String pw = "YourStrong@Passw0rd";
+    double totalAmount = 0;
     try ( Connection con = DriverManager.getConnection(url, uid, pw);
 			Statement stmt = con.createStatement();) 	{
                 NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
@@ -34,10 +35,11 @@ String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
                     out.println("<tr>");
                         out.println("<td>" + rst.getDate("orderDate") + "</td>");
                         out.println("<td>" + currFormat.format(rst.getBigDecimal("totalAmount")) + "</td>");
+                        totalAmount += rst.getBigDecimal("totalAmount").doubleValue();
                     out.println("</tr>");
                 }
                 out.println("</table>");
-
+                out.println("<h2> Total Amount of Sales: " + currFormat.format(totalAmount) + "</h2>");
                 out.println("<h3>List Of Customer</h3>");
                 rst = stmt.executeQuery("SELECT * FROM customer");
                 out.println("<table class=\"table\" border=\"1\">");
@@ -71,7 +73,7 @@ String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
                     out.println("</tr>");
                 }
                 out.println("</table>");
-                
+
                 out.println("<h3>Warning! Will reset database</h3>");
                 out.println("<h4><a href=\"loaddata.jsp\">Reset Database</a></h4>");
 
