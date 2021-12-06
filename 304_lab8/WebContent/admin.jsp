@@ -37,9 +37,45 @@ String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
                     out.println("</tr>");
                 }
                 out.println("</table>");
-                con.close();
+
+                out.println("<h3>List Of Customer</h3>");
+                rst = stmt.executeQuery("SELECT * FROM customer");
+                out.println("<table class=\"table\" border=\"1\">");
+                    out.println("<tr>");
+                        out.println("<th>Customer ID</th>");
+                        out.println("<th>First Name</th>");
+                        out.println("<th>Last Name</th>");
+                        out.println("<th>Email</th>");
+                        out.println("<th>Phone Number</th>");
+                        out.println("<th>Address</th>");
+                        out.println("<th>City</th>");
+                        out.println("<th>State</th>");
+                        out.println("<th>Postal Code</th>");
+                        out.println("<th>Country</th>");
+                        out.println("<th>User ID</th>");
+                        out.println("</tr>");
+                while(rst.next()) {
+                    out.println("<tr>");
+                        out.println("<td>" + rst.getInt(1) + "</td>");
+                        out.println("<td>" + rst.getString(2) + "</td>");
+                        out.println("<td>" + rst.getString(3) + "</td>");
+                        out.println("<td>" + rst.getString(4) + "</td>");
+                        out.println("<td>" + rst.getString(5) + "</td>");
+                        out.println("<td>" + rst.getString(6) + "</td>");
+                        out.println("<td>" + rst.getString(7) + "</td>");
+                        out.println("<td>" + rst.getString(8) + "</td>");
+                        out.println("<td>" + rst.getString(9) + "</td>");
+                        out.println("<td>" + rst.getString(10) + "</td>");
+                        out.println("<td>" + rst.getString(11) + "</td>");
+
+                    out.println("</tr>");
+                }
+                out.println("</table>");
+                
                 out.println("<h3>Warning! Will reset database</h3>");
                 out.println("<h4><a href=\"loaddata.jsp\">Reset Database</a></h4>");
+
+                con.close();
             } catch (SQLException ex) 
             { 	out.println(ex); 
             }
