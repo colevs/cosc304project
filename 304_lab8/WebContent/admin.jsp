@@ -77,6 +77,12 @@ if(userName == null) {
                 out.println("<h3>Add Product</h3>");
                 out.println("<h4><a href=\"addProduct.jsp\">Add Product</a></h4>");
 
+                out.println("<h3>Delete Product</h3>");
+                out.println("<h4><a href=\"deleteProduct.jsp\">Delete Product</a></h4>");
+
+                out.println("<h3>Update Product</h3>");
+                out.println("<h4><a href=\"updateProduct.jsp\">Update Product</a></h4>");
+
                 out.println("<h3>Warning! Will reset database</h3>");
                 out.println("<h4><a href=\"loaddata.jsp\">Reset Database</a></h4>");
 
