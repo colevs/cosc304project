@@ -4,6 +4,7 @@
 <title>Add Product</title>
 </head>
 <body>
+    <%@ include file="auth.jsp" %>
     <h1>Add Product</h1>
     <form action="addingProduct.jsp" method="GET">
         <div>

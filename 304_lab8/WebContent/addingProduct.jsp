@@ -9,6 +9,7 @@
 <title>Adding Product</title>
 </head>
 <body>
+    <%@ include file="auth.jsp" %>
 <%
     try {
 	    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
