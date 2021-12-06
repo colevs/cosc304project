@@ -18,7 +18,7 @@ if(userName == null) {
     out.println("<h4><a href=\"index.jsp\">Index</a></h4>");
     out.println("<h4><a href=\"login.jsp\">Login</a></h4>");
 } else {
-String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
+    String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
     String uid = "SA";
     String pw = "YourStrong@Passw0rd";
     double totalAmount = 0;
@@ -73,6 +73,9 @@ String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
                     out.println("</tr>");
                 }
                 out.println("</table>");
+                
+                out.println("<h3>Add Product</h3>");
+                out.println("<h4><a href=\"addProduct.jsp\">Add Product</a></h4>");
 
                 out.println("<h3>Warning! Will reset database</h3>");
                 out.println("<h4><a href=\"loaddata.jsp\">Reset Database</a></h4>");
