@@ -53,6 +53,5 @@ catch (Exception e)
 }  
 %>
 <h2><a href="index.jsp">Index</a></h2>
-<h2><a href="admin.jsp">Main Menu</a></h2>
 </body>
 </html> 
