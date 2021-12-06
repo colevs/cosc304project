@@ -12,6 +12,12 @@
 <%
 // Include files auth.jsp and jdbc.jsp
 // TODO: Write SQL query that prints out total order amount by day
+String userName = (String) session.getAttribute("authenticatedUser");
+if(userName == null) {
+    out.println("<h1>Access Denied</h1>");
+    out.println("<h4><a href=\"index.jsp\">Index</a></h4>");
+    out.println("<h4><a href=\"login.jsp\">Login</a></h4>");
+} else {
 String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
     String uid = "SA";
     String pw = "YourStrong@Passw0rd";
@@ -32,15 +38,15 @@ String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";
                 }
                 out.println("</table>");
                 con.close();
+                out.println("<h3>Warning! Will reset database</h3>");
+                out.println("<h4><a href=\"loaddata.jsp\">Reset Database</a></h4>");
             } catch (SQLException ex) 
             { 	out.println(ex); 
             }
-
+        }
 %>
 
 </body>
-<h1 style="color: red;">Reset Database</h1>
-<h4><a href="loaddata.jsp">Reset Database</a></h4>
-<p style="color:blue">Warning! This will reset the database</p>
+
 </html>
 
