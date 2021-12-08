@@ -96,6 +96,13 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 					  pstmt1.setInt(3, qty);
 					  pstmt1.setBigDecimal(4, BigDecimal.valueOf(subTotal));
 					  pstmt1.executeUpdate();
+					  String sqlInsertStatementInCart = "INSERT INTO incart (orderId, productId, quantity, price) VALUES (?, ?, ?, ?)";
+					  PreparedStatement pstmt2 = con.prepareStatement(sqlInsertStatementInCart);
+					  pstmt2.setInt(1, orderId);
+					  pstmt2.setInt(2, Integer.parseInt(productId));
+					  pstmt2.setInt(3, qty);
+					  pstmt2.setBigDecimal(4, BigDecimal.valueOf(subTotal));
+					  pstmt2.executeUpdate();
 					}	catch (SQLException ex) {
 							out.println(ex); 
 					}
