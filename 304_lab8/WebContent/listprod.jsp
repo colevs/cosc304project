@@ -55,7 +55,7 @@ String pw = "YourStrong@Passw0rd";
 String productListQuery = "SELECT productName, productId, productPrice FROM product WHERE productName LIKE ?";
 PreparedStatement pStatement = null;
 
-String categoryPopularityQuery
+String categoryPopularityQuery = null;
 
 // Make the connection
 try (Connection con = DriverManager.getConnection(url, uid, pw);) {
