@@ -16,7 +16,7 @@ String p1 = request.getParameter("password1");
 String p2 = request.getParameter("password2");
 if (p1.equals(p2)) {
     String uid = "SA";
-    String pw = "YourStrong@Passw0rd dfdf";
+    String pw = "YourStrong@Passw0rd";
     String Cid = "";
     try ( Connection con = DriverManager.getConnection(url, uid, pw);
 		    Statement stmt = con.createStatement();) 	{
