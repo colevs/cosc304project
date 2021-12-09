@@ -2,6 +2,7 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <%@ page import="java.util.Locale" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,7 @@ if(session.getAttribute("authenticatedUser") != null) {
 
 <% // Get product name to search for
 String name = request.getParameter("productName");
+Integer customerId = null;
 		
 //Note: Forces loading of SQL Server driver
 try
@@ -59,6 +61,9 @@ String categoryPopularityQuery = null;
 
 // Make the connection
 try (Connection con = DriverManager.getConnection(url, uid, pw);) {
+	NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
+	
+
 	if (name == null) name = "";
 	PreparedStatement pstmt = null;
 	ResultSet rst = null;
@@ -68,10 +73,69 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 
 
 // Print out the ResultSet
-	NumberFormat currFormat = NumberFormat.getCurrencyInstance(Locale.US);
 	
+
 	if (name == "") {
+		
+		// If user is logged in and has made orders, recommend items from top 3 categories for the given user
+		if(session.getAttribute("authenticatedUser") != null) {
+			String custIdQuery = "SELECT customerId FROM customer WHERE userid = " + "\'"+session.getAttribute("authenticatedUser")+"\'";
+			PreparedStatement pstmt1 = con.prepareStatement(custIdQuery);
+	        ResultSet rst1 = pstmt1.executeQuery();
+	        rst1.next();
+	        customerId = rst1.getInt(1);
+
+	        String productFromOrderQuery = "SELECT COUNT(*) as categoryCount "+
+	        	"FROM product JOIN orderproduct ON product.productId = orderproduct.productId WHERE orderproduct.orderId IN "+
+	        		"(SELECT orderId FROM ordersummary WHERE customerId = "+customerId+") "+
+	        	"GROUP BY categoryId ORDER BY categoryCount DESC";
+
+			PreparedStatement pstmt2 = con.prepareStatement(productFromOrderQuery);
+	        ResultSet rst2 = pstmt2.executeQuery();
+	        boolean hasRecommended = false;
+
+	        ArrayList<Object[]> recommendedItems = new ArrayList<Object[]>();
+	        for(int i = 0; i < 3; i++) {
+	        	if (rst2.next()) {
+	        		hasRecommended = true;
+	        		String productsByCategory = "SELECT productName, productId, productPrice "+
+	        			"FROM product "+
+	        			"WHERE categoryId = " + rst2.getInt(1);
+
+	        		PreparedStatement pstmt3 = con.prepareStatement(productsByCategory);
+	        		ResultSet rst3 = pstmt3.executeQuery();
+
+	        		while (rst3.next()) {
+	        			Object[] productValues = {rst3.getString(1), rst3.getInt(2), rst3.getFloat(3)};
+	        			recommendedItems.add(productValues);
+	        		}
+
+
+	        	}
+	        }
+	        if (hasRecommended) {
+	        	out.println("<h2>Recommended Products</h2>");
+				out.println("<table><tr><th></th><th>Product Name</th><th>Price</th></tr>");
+					for (int i = 0; i < recommendedItems.size(); i++) {
+						//out.println(recommendedItems[i]);
+						int productId = (int)recommendedItems.get(i)[1];
+						String productName = (String)recommendedItems.get(i)[0];
+						float productPrice = (float)recommendedItems.get(i)[2];
+
+						String addCartLink = "\"addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice)+"\"";
+						String productPageLink = "\"product.jsp?id="+productId+"\"";
+
+						out.println("<tr><td><a href="+addCartLink+">Add to Cart</a></td>"
+							+"<td><a href="+productPageLink+">"+productName+"</a></td>"
+							+"<td>"+currFormat.format(productPrice)+"</td></tr>");
+					}
+				out.println("</table><br />");
+
+	        }
+	        
+		}
 		out.println("<h2>All Products</h2>");
+
 	} else {
 		out.println("<h2>Products containing '"+name+"'</h2>");
 	}
