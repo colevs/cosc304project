@@ -4,6 +4,24 @@
         <title>Ray's Grocery Main Page</title>
 </head>
 <body>
+
+<div align="right" class="topnav">
+    <a href="listprod.jsp">Begin Shopping</a>
+    <a href="listorder.jsp">List All Orders</a>
+    <a href="customer.jsp">Customer Info</a>
+    <a href="admin.jsp">Administrators</a>
+<%
+if(session.getAttribute("authenticatedUser") != null) {
+    out.println("<b>Signed in as: " + session.getAttribute("authenticatedUser") + "</b>");
+}
+if(session.getAttribute("authenticatedUser") != null) {
+    out.println("<a href=\"logout.jsp\">Log out</a>");
+} else {
+    out.println("<a href=\"login.jsp\">Log in</a>");
+}
+%>
+</div>
+        
 <h1 align="center">Welcome to Ray's Grocery</h1>
 
 <h2 align="center"><a href="login.jsp">Login</a></h2>

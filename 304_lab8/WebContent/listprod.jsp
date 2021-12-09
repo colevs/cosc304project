@@ -9,6 +9,23 @@
 </head>
 <body>
 
+<div align="right" class="topnav">
+    <a href="listprod.jsp">Begin Shopping</a>
+    <a href="listorder.jsp">List All Orders</a>
+    <a href="customer.jsp">Customer Info</a>
+    <a href="admin.jsp">Administrators</a>
+<%
+if(session.getAttribute("authenticatedUser") != null) {
+    out.println("<b>Signed in as: " + session.getAttribute("authenticatedUser") + "</b>");
+}
+if(session.getAttribute("authenticatedUser") != null) {
+    out.println("<a href=\"logout.jsp\">Log out</a>");
+} else {
+    out.println("<a href=\"login.jsp\">Log in</a>");
+}
+%>
+</div>
+
 <h1>Search for the products you want to buy:</h1>
 
 <form method="get" action="listprod.jsp">
@@ -35,15 +52,17 @@ String pw = "YourStrong@Passw0rd";
 
 // Variable name now contains the search string the user entered
 // Use it to build a query and print out the resultset.  Make sure to use PreparedStatement!
-String query = "SELECT productName, productId, productPrice FROM product WHERE productName LIKE ?";
+String productListQuery = "SELECT productName, productId, productPrice FROM product WHERE productName LIKE ?";
 PreparedStatement pStatement = null;
+
+String categoryPopularityQuery
 
 // Make the connection
 try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 	if (name == null) name = "";
 	PreparedStatement pstmt = null;
 	ResultSet rst = null;
-	pstmt = con.prepareStatement(query);
+	pstmt = con.prepareStatement(productListQuery);
 	pstmt.setString(1, "%"+name+"%");
 	rst = pstmt.executeQuery();
 
