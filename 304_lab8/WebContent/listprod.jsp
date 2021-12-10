@@ -63,7 +63,7 @@ String pw = "YourStrong@Passw0rd";
 
 // Variable name now contains the search string the user entered
 // Use it to build a query and print out the resultset.  Make sure to use PreparedStatement!
-String productListQuery = "SELECT productName, productId, productPrice FROM product WHERE productName LIKE ?";
+String productListQuery = "SELECT productName, productId, productPrice, productImageURL FROM product WHERE productName LIKE ?";
 PreparedStatement pStatement = null;
 
 String categoryPopularityQuery = null;
@@ -107,7 +107,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 	        for(int i = 0; i < 3; i++) {
 	        	if (rst2.next()) {
 	        		hasRecommended = true;
-	        		String productsByCategory = "SELECT productName, productId, productPrice "+
+	        		String productsByCategory = "SELECT productName, productId, productPrice, productImageURL "+
 	        			"FROM product "+
 	        			"WHERE categoryId = " + rst2.getInt(1);
 
@@ -115,7 +115,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 	        		ResultSet rst3 = pstmt3.executeQuery();
 
 	        		while (rst3.next()) {
-	        			Object[] productValues = {rst3.getString(1), rst3.getInt(2), rst3.getFloat(3)};
+	        			Object[] productValues = {rst3.getString(1), rst3.getInt(2), rst3.getFloat(3), rst3.getString(4)};
 	        			recommendedItems.add(productValues);
 	        		}
 
@@ -130,13 +130,15 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 						int productId = (int)recommendedItems.get(i)[1];
 						String productName = (String)recommendedItems.get(i)[0];
 						float productPrice = (float)recommendedItems.get(i)[2];
+						String imgUrl = (String)recommendedItems.get(i)[3];
 
 						String addCartLink = "\"addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice)+"\"";
 						String productPageLink = "\"product.jsp?id="+productId+"\"";
 
 						out.println("<tr><td><a href="+addCartLink+">Add to Cart</a></td>"
 							+"<td><a href="+productPageLink+">"+productName+"</a></td>"
-							+"<td>"+currFormat.format(productPrice)+"</td></tr>");
+							+"<td>"+currFormat.format(productPrice)+"</td>"
+							+"<td><img src="+imgUrl+" height=\"100\"></td></tr>");
 					}
 				out.println("</table><br />");
 
@@ -153,13 +155,15 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);) {
 		String productName = rst.getString(1);
 		int productId = rst.getInt(2);
 		double productPrice = rst.getDouble(3);
+		String imgUrl = rst.getString(4);
 
 		String addCartLink = "\"addcart.jsp?id="+productId+"&name="+productName+"&price="+Double.toString(productPrice)+"\"";
 		String productPageLink = "\"product.jsp?id="+productId+"\"";
 
 		out.println("<tr><td><a href="+addCartLink+">Add to Cart</a></td>"
 			+"<td><a href="+productPageLink+">"+productName+"</a></td>"
-			+"<td>"+currFormat.format(productPrice)+"</td></tr>");
+			+"<td>"+currFormat.format(productPrice)+"</td>"
+			+"<td><img src="+imgUrl+" height=\"100\"></td></tr>");
 
 		/*out.println("<tr><td><a href="+addCartLink+">Add to Cart</a></td>"
 			+"<td>"+productName+"</td>"
