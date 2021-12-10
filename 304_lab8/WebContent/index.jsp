@@ -2,6 +2,12 @@
 <html>
 <head>
         <title>Ray's Grocery Main Page</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            th, td, a {
+                padding: 5px;
+            }
+        </style>
 </head>
 <body>
 

@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>Administrator Page</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 

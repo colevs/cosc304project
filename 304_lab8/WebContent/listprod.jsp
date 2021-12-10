@@ -6,7 +6,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bigtime Grocery</title>
+	<title>Bigtime Grocery</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	    th, td, a {
+	        padding: 5px;
+	    }
+	    td {
+	    	border:1px solid black;
+	    }
+	</style>
 </head>
 <body>
 

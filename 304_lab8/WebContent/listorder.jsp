@@ -6,9 +6,11 @@
 <html>
 <head>
 <title>Bigtime Grocery Order List</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
 table, th, td {
   border:1px solid black;
+  padding:5px;
 }
 </style>
 </head>

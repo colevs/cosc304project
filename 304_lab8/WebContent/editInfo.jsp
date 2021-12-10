@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>Edit Information</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <h2 align="center">Edit Personal Information: </h2>

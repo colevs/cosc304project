@@ -1,6 +1,7 @@
 <html>
 <head>
-<title>Ray's Grocery</title>
+	<title>Ray's Grocery</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 

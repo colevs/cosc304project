@@ -8,7 +8,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Your Shopping Cart</title>
+	<title>Your Shopping Cart</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	    th, td, a {
+	        padding: 5px;
+	    }
+	    td {
+	    	border:1px solid black;
+	    }
+	</style>
 </head>
 <body>
 
