@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2 align="center">Edit Personal Information: </h2>
-    <form action="editI.jsp" method="post"></form>
+    <form action="editI.jsp" method="post">
     <tr>
         <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="2">Edit first Name:</font></div></td>
         <td><input type="text" name="firstName"  size=10 maxlength= 30></td>
@@ -52,6 +52,8 @@
         <td><div align="left"><font face="Arial, Helvetica, sans-serif" size="2">Edit password:</font></div></td>
         <td><input type="text" name="pword"  size=10 maxlength= 30></td>
     </tr>
-    <input class="submit" type="submit" name="Enter" value="Enter">
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+    </form>
 </body>
 </html>

@@ -1,5 +1,14 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.math.*" %>
 <% 
-    
+try {
+    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+  } catch (java.lang.ClassNotFoundException e) {
+    out.println("ClassNotFoundException: " + e);
+  }
 String Firstname = request.getParameter("firstName");
 String Lastname = request.getParameter("lastName");
 String Email = request.getParameter("email");
@@ -42,9 +51,14 @@ P.setString(10,User);
 P.setString(11,Password);
 P.setInt(12, Cid);
 P.executeUpdate();
-%> <jsp:forward page="customer.jsp" /> <%
-}}
-} catch (Exception e) {
-out.println("An " + e + " has occured. Please enter a valid statment."); %>  
-<jsp:forward page="editInfo.jsp" /><%}
+out.println("<h1>Account Added</h1>");                
+out.println("<h4><a href=\"login.jsp\">Login</a></h4>");
+}
+}
+}
+catch (Exception e) { 
+out.println("<h1>Sorry something went wrong</h1>");                
+out.println("<h4><a href=\"editInfo.jsp\">Register</a></h4>");
+}
+
 %>
