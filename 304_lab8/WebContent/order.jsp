@@ -177,5 +177,6 @@ HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Obje
 
 // Clear cart if order placed successfully
 %>
+<h2><a href="shop.html">Bigtime Grocery Main Page</a></h2>
 </BODY>
 </HTML>
