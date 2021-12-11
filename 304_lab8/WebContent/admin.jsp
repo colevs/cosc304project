@@ -16,7 +16,6 @@
 String userName = (String) session.getAttribute("authenticatedUser");
 if(userName == null) {
     out.println("<h1>Access Denied</h1>");
-    out.println("<h4><a href=\"index.jsp\">Index</a></h4>");
     out.println("<h4><a href=\"login.jsp\">Login</a></h4>");
 } else {
     String url = "jdbc:sqlserver://db:1433;DatabaseName=tempdb;";

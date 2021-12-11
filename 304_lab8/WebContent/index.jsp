@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Ray's Grocery Main Page</title>
+        <title>Bigtime Grocery</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
             th, td, a {

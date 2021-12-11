@@ -51,7 +51,8 @@ catch (Exception e)
 {
     out.print(e);
 }  
+session.setAttribute("authenticatedUser", null);
 %>
-<h2><a href="index.jsp">Index</a></h2>
+<h2><a href="shop.html">Bigtime Grocery Main Page</a></h2>
 </body>
 </html> 
